@@ -8,7 +8,9 @@ The objective of this lab is to create a streaming data pipeline using Apache Sp
 
 #Data:
 
-We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this lab. In order to get all historical daily stock data for Apple from 2012 to present, for example, you type the following command in a terminal window on your sandbox:
+We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this lab. In order to get all historical daily stock data for Apple from 2012 to present, for example, 
+
+you type the following command in a terminal window on your sandbox:
  
 $ wget http://ichart.yahoo.com/table.csv\?s=AAPL\&a=0\&b=1\&c=2012\&d=11\&e=31\&f=2017
  
@@ -20,10 +22,13 @@ Note that the data is provided from most to least recent, so you will need to re
  
 $ sed -n '1!G;h;$p' <input-file> > <output-file>
  
+
 #Standalone Kafka Producer:
 
 The JSON producer record must conform to the following sample:
  
+
+
 {
 "timestamp":"2012-01-30",
 "open":28.190001,
@@ -46,6 +51,7 @@ commands:
 vi /etc/yum.repos.d/mapr-eco.repo
 
 --> change line containing baseurl to be equal to following:
+
 baseurl=http://package.mapr.com/releases/MEP/MEP-2.0.0/redhat
  
 Save the file and then run the following commands:
@@ -60,6 +66,7 @@ Verify that the  version installed is 2.0.1 so it agrees with the Kafka API we 
 rpm -qa | grep mapr-spark
  
 The JSON producer record must conform to the following sample: 
+
 {
 "lastTimestamp":"2012-12-11",
 "meanHigh":32.225999599999994,
