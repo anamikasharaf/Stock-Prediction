@@ -82,6 +82,8 @@ Verify that the  version installed is 2.0.1 so it agrees with the Kafka API we 
 
 rpm -qa | grep mapr-spark
  
+
+
 The JSON producer record must conform to the following sample: 
 
 {
@@ -127,6 +129,8 @@ Your consumer must output to the screen a line for each batch of records it gets
 
 lastTimestamp,stockSymbol,lastClose,deltaPercentage,position
  
+
+
 Here's a sample of output using 0.01 percent as the threshold:
 
 2014-05-09,orcl,41.040001,-0.11007555956311095,buy
