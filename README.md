@@ -2,11 +2,11 @@
 
 Predicting Yesterday's Stock Price:
 
-#Objective:
+Objective:
 
 The objective of this lab is to create a streaming data pipeline using Apache Spark and Apache Kafka in which future stock prices are predicted based on historical data. Goal is to get the "plumbing" correct – not to accurately predict a stock price!
 
-#Data:
+Data:
 
 We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this lab. In order to get all historical daily stock data for Apple from 2012 to present, for example, 
 
@@ -23,7 +23,9 @@ Note that the data is provided from most to least recent, so you will need to re
 $ sed -n '1!G;h;$p' <input-file> > <output-file>
  
 
-#Standalone Kafka Producer:
+
+
+Standalone Kafka Producer:
 
 The JSON producer record must conform to the following sample:
  
@@ -42,7 +44,11 @@ The syntax for running the standalone Java Kafka producer is given below:
 
 java -cp CS185-jar-with-dependencies.jar Lab2.StockProducer localhost:9092 DATA/orcl.csv orcl prices 1000
  
-#Spark Streaming Application
+
+
+
+
+Spark Streaming Application
 
 NOTE: If you have not done so already, install the mapr-spark package on your sandbox.  As the root user, run the following 
 
@@ -81,7 +87,11 @@ The syntax for running the Spark application is given below:
 
 /opt/mapr/spark/spark-2.0.1/bin/spark-submit --class Lab2.StockSparkApp CS185-jar-with-dependencies.jar localhost:9092 local[2] prices stats mycg 5000
  
-#Standalone Kafka Consumer:
+
+
+
+
+Standalone Kafka Consumer:
 
 The value of the "aggregated statistic" metric is calculated as follows:
  
