@@ -47,8 +47,6 @@ import org.apache.spark.streaming.kafka09.LocationStrategies;
 
 
 /**
- * @author jcasaletto
- * 
  * Consumes messages from input Kafka topic, calculates averages, then outputs averages to output Kafka topic
  *
  * Usage: StockSparkApp <broker> <master> <in-topic> <out-topic> <cg>
