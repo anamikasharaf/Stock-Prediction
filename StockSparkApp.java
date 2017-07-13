@@ -107,7 +107,7 @@ public final class StockSparkApp {
             @Override
             public Tuple2<String, JsonNode> call(ConsumerRecord<String, JsonNode> record) throws Exception {
                 
-            	// TODO replace 'null' with key-value pair as tuple2            
+            	// key-value pair as tuple2            
                 return new Tuple2<String, JsonNode>(record.key(), record.value()); 
             }
         }); 
