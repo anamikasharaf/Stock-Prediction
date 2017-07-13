@@ -81,6 +81,8 @@ vi /etc/yum.repos.d/mapr-eco.repo
 
 baseurl=http://package.mapr.com/releases/MEP/MEP-2.0.0/redhat
  
+
+
 Save the file and then run the following commands:
 
 yum remove mapr-spark
@@ -128,14 +130,24 @@ Standalone Kafka Consumer:
 
 The value of the "aggregated statistic" metric is calculated as follows:
  
+
+
 meanVolume * (meanHigh + meanLow + meanOpen + meanClose) / 4.0
  
+
+
 Then when calculating the delta percentage (difference between the previous aggregated statistic and the current one), you need to divide by the meanVolume, as shown below:
  
+
+
 (currentAggregatedStatistic – previousAggregatedStatistic) / ( 100 * meanVolume)
  
+
+
 We must consider positive, negative, and zero values above to formulate the right plan to buy, sell, or hold.
 Your consumer must output to the screen a line for each batch of records it gets from the Kafka topic using the following format:
+
+
 
 lastTimestamp,stockSymbol,lastClose,deltaPercentage,position
  
