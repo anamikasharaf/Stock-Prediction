@@ -27,6 +27,9 @@ Date,Open,High,Low,Close,Volume,Adj Close
 
 Note that the data is provided from most to least recent, so you will need to reverse sort the data in order to simulate our "real-time" pipeline.  Below command works on our linux VM:
  
+
+
+
 $ sed -n '1!G;h;$p' <input-file> > <output-file>
  
 
