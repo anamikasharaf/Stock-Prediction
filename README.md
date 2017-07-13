@@ -12,8 +12,12 @@ We will be using historical financial data from Yahoo! Finance. We can work with
 
 you type the following command in a terminal window on your sandbox:
  
+
+
 $ wget http://ichart.yahoo.com/table.csv\?s=AAPL\&a=0\&b=1\&c=2012\&d=11\&e=31\&f=2017
  
+
+
 The file generated has the following schema:
 
 Date,Open,High,Low,Close,Volume,Adj Close
