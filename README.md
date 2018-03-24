@@ -65,17 +65,22 @@ The JSON producer record's sample: 
 The value of the "aggregated statistic" metric is calculated as follows:
 
  
+ 
 meanVolume * (meanHigh + meanLow + meanOpen + meanClose) / 4.0
+
 
  
 Then when calculating the delta percentage (difference between the previous aggregated statistic and the current one), divide by the meanVolume, as shown below:
 
+
  
 (currentAggregatedStatistic – previousAggregatedStatistic) / ( 100 * meanVolume)
+
 
  
 We must consider positive, negative, and zero values above to formulate the right plan to buy, sell, or hold.
 Consumer output to the screen a line for each batch of records it gets from the Kafka topic using the following format:
+
 
 
 lastTimestamp,stockSymbol,lastClose,deltaPercentage,position
