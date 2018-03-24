@@ -130,16 +130,16 @@ public final class StockSparkApp {
                         Tuple2<String, JsonNode> tuple;
                         while(recordIterator.hasNext()) {
                         	
-                            // TODO get next record
+                            //  get next record
                         	tuple = recordIterator.next();
                         	JsonNode nextrecord = tuple._2;
                         	
-                            // TODO pull out timestamp, stockSymbol from record
+                            //  pull out timestamp, stockSymbol from record
                         	lastTimestamp = nextrecord.get("timestamp").asText();
                         	stockSymbol = tuple._1;
                             
-                            // TODO pull out metrics from record
-                        	// TODO calculate sums (sumHigh += ... , sumLow += ..., etc)
+                            // pull out metrics from record
+                        	// calculate sums (sumHigh += ... , sumLow += ..., etc)
                         	sumHigh += nextrecord.get("high").asDouble();
                         	sumLow += nextrecord.get("low").asDouble();
                         	sumOpen += nextrecord.get("open").asDouble();
@@ -151,7 +151,7 @@ public final class StockSparkApp {
                       
                         }
                         
-                        // TODO calculate meanHigh, meanLow, ...
+                        // calculate meanHigh, meanLow, ...
                         double meanHigh = 0, meanLow = 0, meanOpen = 0, meanClose = 0, meanVolume = 0;
                         if(counter!=0){
                         	
@@ -169,10 +169,10 @@ public final class StockSparkApp {
 	                        producerProps.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 	                        producerProps.put("value.serializer", "org.apache.kafka.connect.json.JsonSerializer");
 	                        
-	                        // TODO create new ObjectNode to put data in
+	                        // create new ObjectNode to put data in
 	                        ObjectNode value = JsonNodeFactory.instance.objectNode();
 	                   
-	                        // TODO put key-value pairs in ObjectNode
+	                        // put key-value pairs in ObjectNode
 	
 	                    	value.put("lastTimestamp", lastTimestamp);
 	                    	value.put("meanHigh", meanHigh);
@@ -182,20 +182,20 @@ public final class StockSparkApp {
 	                        value.put("meanVolume", meanVolume);
 	                        value.put("lastClose", lastClose);
 	                        
-	                        // TODO create a properly-parameterized ProducerRecord
+	                        // create a properly-parameterized ProducerRecord
 	                        ProducerRecord<String,JsonNode> record = new ProducerRecord<String, JsonNode>(outTopic,stockSymbol, value);
 	                        
-	                        // TODO instantiate the KafkaProducer
+	                        // instantiate the KafkaProducer
 	                        Properties props = new Properties();
 	                        props.put("value.serializer", "org.apache.kafka.connect.json.JsonSerializer");
 	                        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 	                        props.put("bootstrap.servers", broker);
 	                        producer = new KafkaProducer<String, JsonNode>(props);
 	                        
-	                        // TODO send the producer record
+	                        // send the producer record
 	                        producer.send(record);
 	                        
-	                        // TODO close the producer
+	                        // close the producer
 	                        producer.close();
 	                        
                         }
