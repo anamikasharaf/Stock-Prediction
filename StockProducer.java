@@ -54,7 +54,7 @@ public class StockProducer {
         configureProducer(brokerSocket);
         topic = args[3];
         
-        // TODO create a buffered file reader for the input file
+        // create a buffered file reader for the input file
         
         String line = "";
         String cvsSplitBy = ",";
@@ -63,17 +63,17 @@ public class StockProducer {
         try{
             reader = new BufferedReader(new FileReader(inputFile));
             
-            // TODO loop through all lines in input file
+            // loop through all lines in input file
             while ((line = reader.readLine()) != null) {
 
                 // using comma as separator
                 String[] input_file = line.split(cvsSplitBy);
                 
-                //TODO filter out "bad" records
+                //filter out "bad" records
                 if(!input_file[0].equals("Date"))
                 {
 
-                	// TODO create an ObjectNode to store data in
+                	// create an ObjectNode to store data in
                 	ObjectNode node = JsonNodeFactory.instance.objectNode();
                 	
                 	node.put("timestamp", input_file[0]);
@@ -86,10 +86,10 @@ public class StockProducer {
 	
                 	ProducerRecord<String,JsonNode> record = new ProducerRecord<String, JsonNode>(topic,stockSymbol, node);
                 
-                	// TODO parse out the fields from the line and create key-value pairs in ObjectNode
+                	// parse out the fields from the line and create key-value pairs in ObjectNode
                 	producer.send(record);
                 
-                	// TODO sleep the thread
+                	// sleep the thread
                 	Thread.sleep(sleepTime);                
                 }
                                            
@@ -100,10 +100,10 @@ public class StockProducer {
             if (reader != null) {
                 try {
                 	
-                	// TODO close buffered reader
+                	// close buffered reader
                 	reader.close();
                 	
-                	// TODO close producer
+                	// close producer
                 	producer.close();
                 	
                 } catch (IOException e) {
