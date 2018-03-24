@@ -4,11 +4,14 @@ Predicting Yesterday's Stock Price:
 
 # Objective:
 
-The objective of this lab is to create a streaming data pipeline using Apache Spark and Apache Kafka in which future stock prices are predicted based on historical data. Goal is to get the "plumbing" correct – not to accurately predict a stock price!
+The objective of this project is to create a streaming data pipeline using Apache Spark and Apache Kafka in which future stock prices are predicted based on historical data. Goal is to get the "plumbing" correct – not to accurately predict a stock price!
 
 # Data:
 
-We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this lab. In order to get all historical daily stock data for Apple from 2012 to present, for example, 
+We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this project. In order to get all historical daily stock data for Apple from 2012 to present, for example, you type the following command in a terminal window on your sandbox:
+ 
+$ wget http://ichart.yahoo.com/table.csv\?s=APPL\&a=0\&b=1\&c=2012\&d=11\&e=31\&f=2017
+
  
 
 The file generated has the following schema:
