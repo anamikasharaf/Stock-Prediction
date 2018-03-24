@@ -63,15 +63,20 @@ The JSON producer record's sample: 
 ## Standalone Kafka Consumer:
 
 The value of the "aggregated statistic" metric is calculated as follows:
+
  
 meanVolume * (meanHigh + meanLow + meanOpen + meanClose) / 4.0
+
  
 Then when calculating the delta percentage (difference between the previous aggregated statistic and the current one), divide by the meanVolume, as shown below:
+
  
 (currentAggregatedStatistic – previousAggregatedStatistic) / ( 100 * meanVolume)
+
  
 We must consider positive, negative, and zero values above to formulate the right plan to buy, sell, or hold.
 Consumer output to the screen a line for each batch of records it gets from the Kafka topic using the following format:
+
 
 lastTimestamp,stockSymbol,lastClose,deltaPercentage,position
  
@@ -91,5 +96,4 @@ Here's a sample of output using 0.01 percent as the threshold:
 2014-06-09,orcl,42.700001,-0.047328194260115676,buy
 
 
- 
 Note when the delta percentage is positive and greater than the threshold, we recommend "sell".  When delta percentage is negative and absolute value is greater than the threshold, we recommend "buy".
