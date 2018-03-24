@@ -65,12 +65,11 @@ The JSON producer record's sample: 
 The value of the "aggregated statistic" metric is calculated as follows:
 
  
- 
 meanVolume * (meanHigh + meanLow + meanOpen + meanClose) / 4.0
 
 
  
-Then when calculating the delta percentage (difference between the previous aggregated statistic and the current one), divide by the meanVolume, as shown below:
+When calculating the delta percentage (difference between the previous aggregated statistic and the current one), divide by the meanVolume, as shown below:
 
 
  
