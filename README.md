@@ -10,11 +10,7 @@ The objective of this project is to create a streaming data pipeline using Apach
 
 We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this project. In order to get all historical daily stock data for Apple from 2012 to present, for example, you type the following command in a terminal window on your sandbox:
  
- 
- 
 $ wget http://ichart.yahoo.com/table.csv\?s=APPL\&a=0\&b=1\&c=2012\&d=11\&e=31\&f=2017
-
- 
 
 The file generated has the following schema:
 
@@ -22,8 +18,6 @@ Date,Open,High,Low,Close,Volume,Adj Close
  
  
 ## Standalone Kafka Producer:
-
-
 
 The JSON producer record's sample:
  
@@ -44,8 +38,6 @@ The JSON producer record's sample:
 }
 
 ## Spark Streaming Application
-
-
 
 The JSON producer record's sample: 
 
@@ -69,35 +61,23 @@ The JSON producer record's sample: 
 
 ## Standalone Kafka Consumer:
 
-
-
 The value of the "aggregated statistic" metric is calculated as follows:
  
-
-
 meanVolume * (meanHigh + meanLow + meanOpen + meanClose) / 4.0
  
-
-
 Then when calculating the delta percentage (difference between the previous aggregated statistic and the current one), divide by the meanVolume, as shown below:
  
-
-
 (currentAggregatedStatistic – previousAggregatedStatistic) / ( 100 * meanVolume)
  
-
-
 We must consider positive, negative, and zero values above to formulate the right plan to buy, sell, or hold.
 Consumer output to the screen a line for each batch of records it gets from the Kafka topic using the following format:
 
-
 lastTimestamp,stockSymbol,lastClose,deltaPercentage,position
  
-
+## Output
 
 Here's a sample of output using 0.01 percent as the threshold:
 
-## Output
 
 2014-05-09,orcl,41.040001,-0.11007555956311095,buy
 
