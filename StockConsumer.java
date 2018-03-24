@@ -41,12 +41,12 @@ public class StockConsumer {
         // configure consumer
         configureConsumer(brokerSocket, groupId);
         
-        // TODO subscribe to the topic
+        // subscribe to the topic
         List<String> topics = new ArrayList<>();
         topics.add(inputTopic);
         consumer.subscribe(topics);
 
-        // TODO loop infinitely -- pulling messages out every pollTimeOut ms
+        // loop infinitely -- pulling messages out every pollTimeOut ms
         JsonNode nextrecord;
         double currentAggregatedStatistic = 0, previousAggregatedStatistic = 0, deltapercentage = 0;
         String decision = null;
@@ -64,13 +64,13 @@ public class StockConsumer {
             String lastTimestamp = null;
             
             
-            // TODO iterate through message batch
+            // iterate through message batch
             while (iterator.hasNext()) {
             		
-            	    // TODO create a ConsumerRecord from message
+            	    // create a ConsumerRecord from message
                     ConsumerRecord<String, JsonNode> record = iterator.next();
                  
-                    // TODO pull out statistics from message
+                    // pull out statistics from message
                     nextrecord = record.value();
                     lastTimestamp = nextrecord.get("lastTimestamp").asText();
                     sumHigh += nextrecord.get("meanHigh").asDouble();
@@ -83,7 +83,7 @@ public class StockConsumer {
                 	count = count + 1;
 
              } 
-            // TODO calculate batch statistics meanHigh, meanLow, meanOpen, meanClose, meanVolume
+            // calculate batch statistics meanHigh, meanLow, meanOpen, meanClose, meanVolume
             if(count!=0){
             	
 	            meanHigh = sumHigh/count;
@@ -94,7 +94,7 @@ public class StockConsumer {
 	            
 	            if(counter == 0){
 	            	
-	            	// TODO calculate currentAggregatedStatistic and compare to previousAggregatedStatistic
+	            	//  calculate currentAggregatedStatistic and compare to previousAggregatedStatistic
 		            currentAggregatedStatistic = (meanVolume * (meanHigh + meanLow + meanOpen + meanClose) )/ 4.0;
 		            deltapercentage = currentAggregatedStatistic / (100 * meanVolume);
 		            previousAggregatedStatistic = currentAggregatedStatistic;
@@ -102,14 +102,14 @@ public class StockConsumer {
 	            }
 	            else{
 	            	
-	            	// TODO calculate currentAggregatedStatistic and compare to previousAggregatedStatistic
+	            	//  calculate currentAggregatedStatistic and compare to previousAggregatedStatistic
 		            currentAggregatedStatistic = (meanVolume * (meanHigh + meanLow + meanOpen + meanClose)) / 4.0;
 		            deltapercentage = (currentAggregatedStatistic - previousAggregatedStatistic)/(100*meanVolume);
 		            previousAggregatedStatistic=currentAggregatedStatistic;
 	            
 	            }
 	            
-	            // TODO determine if delta percentage is greater than threshold 
+	            // determine if delta percentage is greater than threshold 
 	            if(deltapercentage >= 0 && deltapercentage > thresholdPercentage){
 	            	decision = "sell";
 	            }
@@ -120,7 +120,7 @@ public class StockConsumer {
 	            	decision = "hold";
 	            }
 	            
-	            // TODO print output to screen	            
+	            // print output to screen	            
 	            System.out.println(lastTimestamp + "," + stockSymbol + "," + lastClose + "," + deltapercentage + "," + decision);  
 	            
             }
