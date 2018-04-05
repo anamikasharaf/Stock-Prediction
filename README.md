@@ -2,11 +2,11 @@
 
 Predicting Yesterday's Stock Price:
 
-# Objective:
+### Objective:
 
 The objective of this project is to create a streaming data pipeline using Apache Spark and Apache Kafka in which future stock prices are predicted based on historical data. Goal is to get the "plumbing" correct – not to accurately predict a stock price!
 
-# Data:
+### Data:
 
 We will be using historical financial data from Yahoo! Finance. We can work with whichever stocks we want for the purpose of developing and testing this project. In order to get all historical daily stock data for Apple from 2012 to present, for example, you type the following command in a terminal window on your sandbox:
 
@@ -18,7 +18,7 @@ The file generated has the following schema:
 Date,Open,High,Low,Close,Volume,Adj Close
  
  
-## Standalone Kafka Producer:
+### Standalone Kafka Producer:
 
 The JSON producer record's sample:
  
@@ -38,7 +38,7 @@ The JSON producer record's sample:
 
 }
 
-## Spark Streaming Application
+### Spark Streaming Application
 
 The JSON producer record's sample: 
 
@@ -60,7 +60,7 @@ The JSON producer record's sample: 
 
 }
 
-## Standalone Kafka Consumer:
+### Standalone Kafka Consumer:
 
 The value of the "aggregated statistic" metric is calculated as follows:
 
@@ -84,7 +84,7 @@ Consumer output to the screen a line for each batch of records it gets from the 
 
 lastTimestamp,stockSymbol,lastClose,deltaPercentage,position
  
-## Output
+### Output
 
 Here's a sample of output using 0.01 percent as the threshold:
 
