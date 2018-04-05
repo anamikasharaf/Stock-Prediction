@@ -1,9 +1,3 @@
-/**
- * @author Anamika Sharaf
- * @date May 7, 2017
- * 
- */
-
 package Lab2;
 
 import org.apache.kafka.clients.consumer.*;
